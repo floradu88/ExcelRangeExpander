@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ExcelRangeExpander</id>
+    <version>1.0.0</version>
+    <title>ExcelRangeExpander</title>
+    <authors>Radu Florescu</authors>
+    <owners>Radu Florescu</owners>
+    <projectUrl>https://github.com/floradu88/ExcelRangeExpander</projectUrl>
+    <licenseUrl>https://github.com/floradu88/ExcelRangeExpander/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>An alternative way to generate column ranges excel like for use with excel formula parser.</description>
+    <releaseNotes>1.0.0 Initial release</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>excel range expander</tags>
+  </metadata>
+</package>
