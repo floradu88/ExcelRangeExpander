@@ -5,11 +5,6 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelRangeExpander.Tests", "src\ExcelRangeExpander.Tests\ExcelRangeExpander.Tests.csproj", "{414416F0-EE73-4512-AE65-057604416889}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{83A5B94D-AB31-42CB-8EBA-34ABFF62819B}"
-	ProjectSection(SolutionItems) = preProject
-		src\ExcelRangeExpander\Package.nuspec = src\ExcelRangeExpander\Package.nuspec
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelRangeExpander", "src\ExcelRangeExpander\ExcelRangeExpander.csproj", "{E1F216CC-1D37-434D-BBE9-18B6BD745CBB}"
 EndProject
 Global

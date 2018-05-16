@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\ExcelHelper.cs" />
+    <Compile Include="Interfaces\IRangeExpander.cs" />
     <Compile Include="RangeExpander.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
