@@ -3,11 +3,34 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelRangeExpander.Tests", "src\ExcelRangeExpander.Tests\ExcelRangeExpander.Tests.csproj", "{414416F0-EE73-4512-AE65-057604416889}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{83A5B94D-AB31-42CB-8EBA-34ABFF62819B}"
+	ProjectSection(SolutionItems) = preProject
+		src\ExcelRangeExpander\Package.nuspec = src\ExcelRangeExpander\Package.nuspec
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelRangeExpander", "src\ExcelRangeExpander\ExcelRangeExpander.csproj", "{E1F216CC-1D37-434D-BBE9-18B6BD745CBB}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{414416F0-EE73-4512-AE65-057604416889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{414416F0-EE73-4512-AE65-057604416889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{414416F0-EE73-4512-AE65-057604416889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{414416F0-EE73-4512-AE65-057604416889}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1F216CC-1D37-434D-BBE9-18B6BD745CBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1F216CC-1D37-434D-BBE9-18B6BD745CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1F216CC-1D37-434D-BBE9-18B6BD745CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1F216CC-1D37-434D-BBE9-18B6BD745CBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9AF12858-A2CA-40AC-9F59-9E3F865503E9}
+		SolutionGuid = {D8903B5A-1FCA-4750-9F17-03A10073FAF3}
 	EndGlobalSection
 EndGlobal
