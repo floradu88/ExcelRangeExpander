@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text.RegularExpressions;
 using ExcelRangeExpander.Helpers;
@@ -9,6 +10,8 @@ namespace ExcelRangeExpander
 {
     public class RangeExpander : IRangeExpander
     {
+        private readonly int maximumRowCount = int.Parse(ConfigurationManager.AppSettings["ExcelRangeExpander.MaximumRowCount"] ?? "65535");
+
         public string Expand(string range)
         {
             var result = string.Empty;
@@ -17,17 +20,34 @@ namespace ExcelRangeExpander
             if (string.IsNullOrEmpty(range))
                 return result;
 
+            extractRanges(range, ref ranges);
+
+            if (ranges.Any())
+                result = string.Join(",", ranges);
+
+            return result;
+        }
+
+        public List<string> ExpandList(string range)
+        {
+            var ranges = new List<string>();
+
+            if (string.IsNullOrEmpty(range))
+                return ranges;
+
+            extractRanges(range, ref ranges);
+
+            return ranges;
+        }
+
+        private void extractRanges(string range, ref List<string> ranges)
+        {
             var rangeValues = range.Split(new string[] { "," }, StringSplitOptions.None);
 
             foreach (var rangeValue in rangeValues)
             {
                 ranges.AddRange(Parse(rangeValue));
             }
-
-            if (ranges.Any())
-                result = string.Join(",", ranges);
-
-            return result;
         }
 
         private List<string> Parse(string range)
@@ -55,6 +75,7 @@ namespace ExcelRangeExpander
             int end = 0;
             int.TryParse(startValueString, out start);
             int.TryParse(endValueString, out end);
+
             if (start != 0 && end != 0 && start <= end)
             {
                 ExpandRange(result, startColumnString, endColumnString, start, end);
@@ -62,12 +83,12 @@ namespace ExcelRangeExpander
             else if (start == 0 && end == 0)
             {
                 start = 1;
-                end = 65535;
+                end = maximumRowCount;
                 ExpandRange(result, startColumnString, endColumnString, start, end);
             }
             else if (end == 0 && start != 0)
             {
-                end = 65535;
+                end = maximumRowCount;
 
                 ExpandRange(result, startColumnString, endColumnString, start, end);
             }
@@ -90,11 +111,15 @@ namespace ExcelRangeExpander
             }
             else
             {
-                for (int c = ExcelHelper.ColumnNameToNumber(startColumnString); c <= ExcelHelper.ColumnNameToNumber(endColumnString); c++)
+                var endRange = ExcelHelper.ColumnNameToNumber(endColumnString);
+                var startRange = ExcelHelper.ColumnNameToNumber(startColumnString);
+
+                for (int c = startRange; c <= endRange; c++)
                 {
+                    var columnName = ExcelHelper.NumberToColumnName(c);
                     for (int i = start; i <= end; i++)
                     {
-                        result.Add(ExcelHelper.NumberToColumnName(c) + i);
+                        result.Add(columnName + i);
                     }
                 }
             }

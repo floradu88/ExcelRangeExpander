@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Configuration;
 using ExcelRangeExpander.Interfaces;
 using Xunit;
 
@@ -8,6 +8,8 @@ namespace ExcelRangeExpander.Tests
 {
     public class RangeExpanderTests
     {
+        int maximumColumnCount = int.Parse(ConfigurationManager.AppSettings["ExcelRangeExpander.MaximumRowCount"] ?? "65536");
+
         [Theory]
         [InlineData("A1:A2", "A1,A2")]
         [InlineData("A1:A3", "A1,A2,A3")]
@@ -24,7 +26,7 @@ namespace ExcelRangeExpander.Tests
         }
 
         [Theory]
-        
+
         [InlineData("A3:C1")]
         public void should_throw_exception_if_range_is_invalid(string range)
         {
@@ -40,7 +42,7 @@ namespace ExcelRangeExpander.Tests
             string expectedRange = "";
             var rangeValues = new List<string>();
 
-            for (int i = 1; i <= 65535; i++)
+            for (int i = 1; i <= maximumColumnCount; i++)
             {
                 rangeValues.Add("A" + i);
             }
@@ -62,7 +64,7 @@ namespace ExcelRangeExpander.Tests
             string expectedRange = "";
             var rangeValues = new List<string>();
 
-            for (int i = 1; i <= 65535; i++)
+            for (int i = 1; i <= maximumColumnCount; i++)
             {
                 rangeValues.Add("A" + i);
             }
