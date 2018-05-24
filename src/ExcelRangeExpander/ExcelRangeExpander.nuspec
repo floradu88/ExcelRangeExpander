@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ExcelRangeExpander</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>ExcelRangeExpander</title>
     <authors>Radu Florescu</authors>
     <owners>Radu Florescu</owners>
@@ -10,7 +10,7 @@
     <licenseUrl>https://github.com/floradu88/ExcelRangeExpander/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>An alternative way to generate column ranges excel like for use with excel formula parser.</description>
-    <releaseNotes>1.0.3 - Minor fixes to how ranges are expanded. Small performance improvements to range expansion.</releaseNotes>
+    <releaseNotes>1.0.4 - Added helper methods to check if a values is within range.</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>excel range expander</tags>
   </metadata>

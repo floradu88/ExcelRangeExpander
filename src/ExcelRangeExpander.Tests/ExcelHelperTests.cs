@@ -1,4 +1,5 @@
-﻿using ExcelRangeExpander.Helpers;
+﻿using System;
+using ExcelRangeExpander.Helpers;
 using Xunit;
 
 namespace ExcelRangeExpander.Tests
@@ -25,6 +26,14 @@ namespace ExcelRangeExpander.Tests
         public void should_convert_excel_column_name_to_number(string columnName, int number)
         {
             Assert.Equal(ExcelHelper.ColumnNameToNumber(columnName), number);
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void should_throw_exception_converting_empty_excel_column_name_to_number(string columnName)
+        {
+            Assert.Throws<ArgumentNullException>(() => ExcelHelper.ColumnNameToNumber(columnName));
         }
     }
 }

@@ -26,7 +26,6 @@ namespace ExcelRangeExpander.Tests
         }
 
         [Theory]
-
         [InlineData("A3:C1")]
         public void should_throw_exception_if_range_is_invalid(string range)
         {

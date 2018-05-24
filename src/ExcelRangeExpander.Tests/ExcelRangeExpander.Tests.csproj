@@ -59,6 +59,7 @@
     <Compile Include="ExcelHelperTests.cs" />
     <Compile Include="RangeExpanderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RangeHelperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

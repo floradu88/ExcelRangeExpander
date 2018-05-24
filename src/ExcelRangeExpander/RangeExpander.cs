@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Text.RegularExpressions;
 using ExcelRangeExpander.Helpers;
 using ExcelRangeExpander.Interfaces;
 
@@ -52,30 +51,15 @@ namespace ExcelRangeExpander
 
         private List<string> Parse(string range)
         {
-            var values = range.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-            var result = new List<string>();
+            List<string> result = new List<string>();
+            int start, end;
+            string startColumnString, endColumnString;
 
-            var startValue = values.FirstOrDefault();
-            string endValue = "";
-
-            if (values.Length == 2)
+            if (!RangeHelper.ParseRange(range, out startColumnString, out endColumnString, out start, out end))
             {
-                endValue = values.LastOrDefault();
+                return result;
             }
-
-            var startValueString = GetResultString(startValue, @"\d+");
-            var endValueString = GetResultString(endValue, @"\d+");
-            var startColumnString = Regex.Replace(startValue, @"\d+", string.Empty);
-            var endColumnString = Regex.Replace(endValue, @"\d+", string.Empty);
-
-            if (string.IsNullOrEmpty(endValue))
-                endColumnString = startColumnString;
-
-            int start = 0;
-            int end = 0;
-            int.TryParse(startValueString, out start);
-            int.TryParse(endValueString, out end);
-
+            
             if (start != 0 && end != 0 && start <= end)
             {
                 ExpandRange(result, startColumnString, endColumnString, start, end);
@@ -123,11 +107,6 @@ namespace ExcelRangeExpander
                     }
                 }
             }
-        }
-
-        private static string GetResultString(string startValue, string pattern)
-        {
-            return Regex.Match(startValue, pattern).Value;
         }
     }
 }
